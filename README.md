@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :history
+- has_one :histories
 
 ## destinations テーブル
 
