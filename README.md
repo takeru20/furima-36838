@@ -15,7 +15,7 @@
 
 ### Association
 
-- has_many :history
+- has_many :histories
 - has_many :products
 
 ## products テーブル
@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :histories
+- has_one :history
 
 ## destinations テーブル
 
