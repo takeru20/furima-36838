@@ -15,6 +15,7 @@
 
 ### Association
 
+- belongs_to :history
 - has_many :products
 
 ## products テーブル
@@ -34,34 +35,23 @@
 ### Association
 
 - belongs_to :user
-- has_many   :destinations
+- belongs_to :history
 
 ## destinations テーブル
 
-| Column           | Type       | Options     |
-| ---------------- | ---------- | ----------- |
-| post_code        | string     | null: false |
-| prefecture       | string     | null: false |
-| municipalities   | string     | null: false |
-| address          | string     | null: false |
-| building         | string     | null: false |
-| telephone_number | string     | null: false |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| post_code        | string     | null: false                    |
+| area_id          | integer    | null: false                    |
+| municipalities   | string     | null: false                    |
+| address          | string     | null: false                    |
+| building         | string     | null: false                    |
+| telephone_number | string     | null: false                    |
+| history          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :product
-
-##  Cards テーブル
-
-| Column           | Type       | Options     |
-| ---------------- | ---------- | ----------- |
-| card_number      | string     | null: false |
-| expiration_date  | date       | null: false |
-| security_code    | string     | null: false |
-
-### Association
-
-- belongs_to :product
+- belongs_to :history
 
 ##   Histories テーブル
 
@@ -69,8 +59,9 @@
 | ------------- | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
 | product       | references | null: false, foreign_key: true |
-| purchase_date | date       | null: false                    |
 
 ### Association
 
+- belongs_to :user
 - belongs_to :product
+- belongs_to :destination
