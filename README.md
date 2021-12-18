@@ -15,7 +15,7 @@
 
 ### Association
 
-- belongs_to :history
+- has_many :history
 - has_many :products
 
 ## products テーブル
@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :history
+- has_one :history
 
 ## destinations テーブル
 
@@ -45,7 +45,7 @@
 | area_id          | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
 | address          | string     | null: false                    |
-| building         | string     | null: false                    |
+| building         | string     |                                |
 | telephone_number | string     | null: false                    |
 | history          | references | null: false, foreign_key: true |
 
@@ -64,4 +64,4 @@
 
 - belongs_to :user
 - belongs_to :product
-- belongs_to :destination
+- has_one :destination
