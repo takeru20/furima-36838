@@ -1,8 +1,4 @@
-class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
-
-  def index
-  end
+class ProductsController < ApplicationController
 
   def new
     @product = Product.new
