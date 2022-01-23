@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to item_path(product.id)
+      redirect_to item_path(@product.id)
     else
       render :edit
     end
