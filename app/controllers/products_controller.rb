@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   def new
     @product = Product.new
   end
@@ -15,9 +14,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    unless @product.user_id == current_user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @product.user_id == current_user.id
   end
 
   def update
@@ -25,7 +22,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to root_path
     else
-      render "items/edit"
+      render 'items/edit'
     end
   end
 
