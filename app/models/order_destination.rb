@@ -1,6 +1,6 @@
 class OrderDestination
   include ActiveModel::Model
-  attr_accessor :user_id, :product_id, :post_code, :area_id, :municipalities, :address, :building, :telephone_number, :order
+  attr_accessor :user_id, :product_id, :post_code, :area_id, :municipalities, :address, :building, :telephone_number, :order, :token
 
   with_options presence: true do
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
@@ -12,6 +12,6 @@ class OrderDestination
   def save
     order = Order.create(user_id: user_id, product_id: product_id)
     Destination.create(post_code: post_code, area_id: area_id, municipalities: municipalities, address: address,
-                       building: building, telephone_number: telephone_number, order: order)
+                       building: building, telephone_number: telephone_number, order_id: order.id)
   end
 end
