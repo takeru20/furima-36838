@@ -1,6 +1,6 @@
 class OrderDestination
   include ActiveModel::Model
-  attr_accessor :user_id, :product_id, :post_code, :area_id, :municipalities, :address, :building, :telephone_number, :order, :token
+  attr_accessor :user_id, :product_id, :post_code, :area_id, :municipalities, :address, :building, :telephone_number, :token
 
   with_options presence: true do
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
@@ -8,6 +8,9 @@ class OrderDestination
     validates :municipalities
     validates :address
     validates :telephone_number, format: { with: /\A[0-9]{10,11}\z/ }
+    validates :token
+    validates :user_id
+    validates :product_id
   end
 
   def save

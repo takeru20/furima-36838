@@ -15,6 +15,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if @product.order.present? || current_user == @product.user
+      redirect_to root_path
+    end
   end
 
   def create

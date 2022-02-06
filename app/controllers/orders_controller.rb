@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+  before_action :set_product_params,   only: [:index, :create]
+
   def index
-    @product = Product.find(params[:product_id])
+    set_product_params
     @order_destination = OrderDestination.new
     if @product.order.present? || current_user == @product.user
       redirect_to root_path
@@ -8,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
+    set_product_params
     @order_destination = OrderDestination.new(order_params)
     if @order_destination.valid?
       pay_product
@@ -33,5 +36,9 @@ class OrdersController < ApplicationController
     card: order_params[:token],
     currency: 'jpy'
     )
+  end
+
+  def set_product_params
+    @product = Product.find(params[:product_id])
   end
 end
